@@ -236,7 +236,7 @@
       width: 257px;
       height: calc(295px + (295 - 295) * (100vh - 375px) / (1322 - 375));
       color: black;
-      text-align: center;
+      /* text-align: center; */
       padding: 8px;
     }
 
@@ -498,7 +498,7 @@
       height: 75px;
       /* Adjusted height proportionally */
       position: absolute;
-      border: 12px solid white;
+      border: 12px solid gray;
       /* Adjusted border size */
       border-radius: 150px 150px 0 0;
       border-bottom: none;
@@ -560,7 +560,7 @@
       font-size: 12px;
       padding: 1px 15px;
       border-radius: 8px;
-      background: green;
+      background: #2DBF3C;
       rotate: 45deg;
     }
 
@@ -572,9 +572,99 @@
       font-size: 12px;
       padding: 1px 9px;
       border-radius: 8px;
-      background: green;
+      background: #2DBF3C;
       rotate: 45deg;
     }
+
+
+    .multigraph2 {
+  width: 200px; /* Change width to 200px */
+  height: 80px; /* Adjusted height proportionally */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -40px 0 0 -100px; /* Adjusted margin to center properly */
+}
+
+.multigraph2:before {
+  content: '';
+  width: 200px; /* Change width to 200px */
+  height: 100px; /* Adjusted height proportionally */
+  position: absolute;
+  border: 16px solid gray; /* Adjusted border size */
+  border-radius: 200px 200px 0 0;
+  border-bottom: none;
+}
+
+.graph2 {
+  width: 200px; /* Change width to 200px */
+  height: 100px; /* Adjusted height proportionally */
+  position: absolute;
+  overflow: hidden;
+}
+
+.graph2:before,
+.graph2:after {
+  width: 200px; /* Change width to 200px */
+  height: 100px; /* Adjusted height proportionally */
+  position: absolute;
+  top: 100%;
+  border: 16px solid #2DBF3C; /* Adjusted border size */
+  content: '';
+  border-radius: 0 0 200px 200px;
+  border-top: none;
+  transform-origin: center top;
+}
+
+.zero2:after {
+  width: 200px; /* Change width to 200px */
+  height: 100px; /* Adjusted height proportionally */
+  position: absolute;
+  top: 100%;
+  content: '';
+  border-top: none;
+  transform-origin: center top;
+}
+
+.graph2:after {
+  transform: rotate(40deg);
+}
+
+.reading2 {
+  position: absolute;
+  bottom: -34px; /* Adjusted bottom position */
+  left: 38px; /* Adjusted left position */
+  color: black;
+  /* font-size: 28px; Adjusted font size */
+  /* font-weight: 600; */
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.zero2 {
+  position: absolute;
+  bottom: -56px; /* Adjusted bottom position */
+  left: -10px; /* Adjusted left position */
+  color: white;
+  font-size: 12px; /* Adjusted font size */
+  padding: 2px 15px; /* Adjusted padding */
+  border-radius: 12px; /* Adjusted border-radius */
+  background: #2DBF3C;
+}
+
+.hundred2 {
+  position: absolute;
+  bottom: -56px; /* Adjusted bottom position */
+  right: -12px; /* Adjusted right position */
+  color: white;
+  font-size: 12px; /* Adjusted font size */
+  padding: 2px 15px; /* Adjusted padding */
+  border-radius: 12px; /* Adjusted border-radius */
+  background: #2DBF3C;
+}
+
 
     /* Wahid CSS - END  */
   </style>
@@ -779,7 +869,19 @@
   <section class="container-fluid">
     <span class="headings">COMMUNITY BUILDINGS</span>
     <div class="community-container">
-      <div class="total-power">Total Power</div>
+      <div class="total-power" style="position: relative;">
+        <div style="text-align: center;">Total Power</div>
+        <div class="multigraph2">
+          <span class="graph2"></span>
+          <span class="zero2">0</span>
+          <span class="reading2">
+            <img src="./images/bolt.svg" alt="">
+            <strong style="font-size: 16px;">Total EDH Power</strong>
+            <span style="color: gray; font-size: 12px;">16.0 KW</span>
+          </span>
+          <span class="hundred2">250</span>
+        </div>
+      </div>
       <div>
         <div class="community-heading">Community Building</div>
         <div class="machine-container-section">
