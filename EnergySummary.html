@@ -46,7 +46,7 @@
     }
 
     .admin-heading {
-      padding-top: 2rem;
+      padding-top: 5rem;
     }
 
     .admin-heading h1 {
@@ -151,38 +151,38 @@
       display: block;
       text-align: center;
       font-weight: bolder;
-      font-size: calc(22px + (32 - 22) * (100vw - 375px) / (1920 - 375));
+      font-size: calc(22px + (26 - 22) * (100vw - 375px) / (1920 - 375));
       color: #1e2277;
-      line-height: calc(33px + (48 - 33) * (100vh - 375px) / (1322 - 375));
+      line-height: calc(33px + (39 - 33) * (100vh - 375px) / (1322 - 375));
     }
 
     .cards-heading {
-      font-size: calc(18px + (20 - 18) * (100vw - 375px) / (1920 - 375));
-      line-height: calc(27px + (30 - 27) * (100vh - 375px) / (1322 - 375));
+      font-size: calc(14px + (16 - 14) * (100vw - 375px) / (1920 - 375));
+      line-height: calc(20px + (24 - 20) * (100vh - 375px) / (1322 - 375));
       font-weight: 600px;
       color: #0085ff;
     }
 
     .hr-style {
       background-color: #0085ff;
-      height: 4px;
+      height: 2px;
       width: 120px;
       margin-top: 0 !important;
       margin-bottom: 0 !important;
     }
 
     .card-paragraph1 {
-      font-size: 18px;
+      font-size: 14px;
       font-weight: 500px;
-      line-height: 27px;
+      line-height: 21px;
       margin-bottom: 0;
     }
 
     .card-paragraph2 {
       color: #0085ff;
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 500px;
-      line-height: 24px;
+      line-height: 21px;
       margin-bottom: 0;
     }
 
@@ -191,20 +191,20 @@
       box-shadow: 2px 4px 33px 0px rgba(0, 0, 0, 0.05);
       -webkit-box-shadow: 2px 4px 33px 0px rgba(0, 0, 0, 0.05);
       -moz-box-shadow: 2px 4px 33px 0px rgba(0, 0, 0, 0.05);
-      padding: 20px;
+      padding: 5px 20px; 
       display: flex;
       justify-content: space-between;
       align-items: start;
       width: calc(335px + (354 - 335) * (100vw - 375px) / (1920 - 375));
-      height: 172px;
+      height: 120px;
     }
 
     .card-img {
       background-color: #f4f7f9;
       padding: 5px;
       border-radius: 4px;
-      width: 60px;
-      height: 60px;
+      width: 77px;
+      height: 75px;
     }
 
     .cards {
@@ -237,7 +237,7 @@
       font-weight: 500;
       font-size: calc(18px + (20 - 18) * (100vw - 375px) / (1920 - 375));
       width: 257px;
-      height: calc(250px + (250 - 250) * (100vh - 375px) / (1322 - 375));
+      height: calc(225px + (225 - 225) * (100vh - 375px) / (1322 - 375));
       color: black;
       /* text-align: center; */
       padding: 8px;
@@ -247,7 +247,6 @@
       max-width: 493px;
       height: auto;
       margin: 0;
-      padding-top: 30px;
     }
 
     .machine-container-section {
@@ -268,17 +267,17 @@
     }
 
     .machine-wrapper {
-      height: 219px;
+      height: 167px;
     }
 
     .machine-wrapper img{
-      height: 100%;
+      max-width: 100%;
     }
 
     .community-heading {
-      font-size: 26px;
-      font-weight: 700px;
-      line-height: 39px;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 30px;
       text-align: center;
       padding: 5px 0;
     }
@@ -311,7 +310,7 @@
 
     .water-power-heading {
       font-size: 15px;
-      font-weight: 500px;
+      font-weight: 500;
     }
 
     .water2 {
@@ -346,7 +345,7 @@
 
     .red-hr {
       background-color: #f8712e;
-      height: 4px;
+      height: 2px;
       width: 120px;
       margin: 0 !important;
     }
@@ -361,7 +360,7 @@
 
     .green-hr {
       background-color: #2dbf3c;
-      height: 4px;
+      height: 2px;
       width: 120px;
       margin: 0 !important;
     }
@@ -376,7 +375,7 @@
 
     .yellow-hr {
       background-color: #e1b900;
-      height: 4px;
+      height: 2px;
       width: 120px;
       margin: 0 !important;
     }
@@ -387,8 +386,25 @@
 
     .chiller-text-wrapper {
       display: flex;
+      align-items: center;
       gap: 30px;
 
+    }
+
+    .water-img-wrapper {
+      width: 150px;
+      height: 150px;
+    }
+
+    .water-img-wrapper img {
+      max-width: 100%;
+      height: 100%;
+    }
+
+    .water-container-section{
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
     }
 
     .overlay-text {
@@ -406,13 +422,12 @@
       align-items: center;
     }
 
-    @media screen and (max-width: 576px) {
+    @media screen and (max-width: 700px) {
 
       body {
         height: 100%;
       }
 
-     
 
       .mr30{
         margin: 0;
@@ -424,10 +439,11 @@
 
       .machine-wrapper {
         max-width: 100%;
+        height: auto;
       }
 
-      .machine-wrapper img{
-        max-width: 100%;
+      .flex-align{
+        padding-top: 30px;
       }
     }
 
@@ -448,31 +464,22 @@
         0 0 5px #00FF5D,
         /* White glow */
         0 0 0px #00FF5D;
-      position: absolute;
-      top: 0;
-      right: 230px;
       text-align: center;
+    }
+
+    .glow-text-wrapper{
+      text-align: center;
+      padding-top: 8px;
+    }
+
+    .flex{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      align-items: baseline;
     }
 
     .glow-text span {
-      display: block;
-    }
-    .glow-text2 {
-      font-size: 16px;
-      font-weight: bold;
-      color: #fff;
-      text-shadow: 0 0 10px #00FF5D,
-        /* White glow */
-        0 0 5px #00FF5D,
-        /* White glow */
-        0 0 0px #00FF5D;
-      position: absolute;
-      top: 0;
-      right: 30px;
-      text-align: center;
-    }
-
-    .glow-text2 span {
       display: block;
     }
 
@@ -940,55 +947,57 @@
         </div>
       </div>
       <div>
-        <div class="community-heading">Community Building</div>
+        <div class="flex">
+          <div class="community-heading">Community Building</div>
+          <div class="glow-text-wrapper">
+            <strong class="glow-text">Chillwe Water Flow <span id="chillwe_flow_1"></span></strong>
+          </div>
+        </div>
+
         <div class="machine-container-section">
           <div class="machine-wrapper">
             <img src="./images/engine-only.svg" alt="machine1" class="machine1" />
-            <strong class="glow-text">Chillwe Water Flow <span id="chillwe_flow_1">500 L/s</span></strong>
-            <span class="text1">CNDWR>></span>
-            <span class="text2">>>CNDWR</span>
-            <span class="text3">CNDWR>></span>
-            <span class="text4">>>CNDWR</span>
+            
           </div>
-          <div class="water-power">
-            <div class="star-sec">
-              <img src="./images/star.svg" alt="" />
-              <p class="water-power-heading">Chillwe Water Power</p>
-            </div>
-            <div class="multigraph">
-              <span id="graph1" class="graph"></span>
-              <span class="zero">0</span>
-              <span id="chillwe_power_1" class="reading"></span>
-              <span class="hundred">100</span>
-            </div>
-          </div>
+        </div>
+      </div>
+      <div class="water-power">
+        <div class="star-sec">
+          <img src="./images/star.svg" alt="" />
+          <p class="water-power-heading">Chillwe Water Power</p>
+        </div>
+        <div class="multigraph">
+          <span id="graph1" class="graph"></span>
+          <span class="zero">0</span>
+          <span id="chillwe_power_1" class="reading"></span>
+          <span class="hundred">100</span>
         </div>
       </div>
       <div>
         <div>
-          <div class="community-heading">Harbor Building</div>
-          <div class="machine-container-section">
-            <div class="machine-wrapper">
-              <img src="./images/engine-only.svg" alt="machine1" class="machine1" />
-              <strong class="glow-text">Chillwe Water Flow <span id="chillwe_flow_2">500 L/s</span></strong>
-              <span class="text1">CNDWR>></span>
-              <span class="text2">>>CNDWR</span>
-              <span class="text3">CNDWR>></span>
-              <span class="text4">>>CNDWR</span>
-            </div>
-            <div class="water-power">
-              <div class="star-sec">
-                <img src="./images/star.svg" alt="" />
-                <p class="water-power-heading">Chillwe Water Power</p>
-              </div>
-              <div class="multigraph">
-                <span id="graph3" class="graph"></span>
-                <span class="zero">0</span>
-                <span id="chillwe_power_2" class="reading"></span>
-                <span class="hundred">100</span>
-              </div>
+          <div class="flex">
+            <div class="community-heading">Harbor Building</div>
+            <div class="glow-text-wrapper">
+              <strong class="glow-text">Chillwe Water Flow <span id="chillwe_flow_2"></span></strong>
             </div>
           </div>
+          <div class="machine-container-section">
+            <div class="machine-wrapper">
+              <img src="./images/engine-only.svg" alt="machine1" class="machine1" />      
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="water-power">
+        <div class="star-sec">
+          <img src="./images/star.svg" alt="" />
+          <p class="water-power-heading">Chillwe Water Power</p>
+        </div>
+        <div class="multigraph">
+          <span id="graph3" class="graph"></span>
+          <span class="zero">0</span>
+          <span id="chillwe_power_2" class="reading"></span>
+          <span class="hundred">100</span>
         </div>
       </div>
     </div>
@@ -996,7 +1005,7 @@
 
   </section>
 
-  <section class="container-fluid mb-40">
+  <section class="container-fluid">
     <span class="headings">OASIS BUILDINGS</span>
     <div class="community-container">
       <!-- <div class="total-power">Total Power</div> -->
@@ -1023,62 +1032,48 @@
           </div>
         </div>
       </div>
-
-      <div>
-        <div class="machine-container-section">
-          <div class="overlay-text">
-            <span>No Of Chiller Running: </span>
-            <p id="chiller_running"></p>
+      <div class="overlay-text">
+        <span>No Of Chiller Running: </span>
+        <p id="chiller_running"></p>
+      </div>
+      <div class="machine-container-section">
+        <div class="machine-wrapper">
+          <div class="glow-text-wrapper">
+            <strong class="glow-text">Chillwe Water Flow <span id="chillwe_flow_3"></span></strong>
           </div>
-
-          <div class="machine-wrapper" style="position: relative;">
-            <img src="./images/engine-only.svg" alt="machine1" class="machine1" />
-            <strong class="glow-text2">Chillwe Water Flow <span id="chillwe_flow_3"></span></strong>
-            <span class="text1">CNDWR>></span>
-            <span class="text2">>>CNDWR</span>
-            <span class="text3">CNDWR>></span>
-            <span class="text4">>>CNDWR</span>
-          </div>
-          <div class="water-power mr30">
-            <div class="star-sec">
-              <img src="./images/temperature1.svg" alt="" />
-              <p class="water-power-heading">Supply Temperature</p>
-            </div>
-            <div class="multigraph">
-              <span id="temp1" class="graph"></span>
-              <span class="zero">0</span>
-              <span id="temp1_v" class="reading"></span>
-              <span class="hundred">100</span>
-            </div>
-          </div>
-          <div class="water-power">
-            <div class="star-sec">
-              <img src="./images/temperature1.svg" alt="" />
-              <p class="water-power-heading">Supply Temperature</p>
-            </div>
-            <div class="multigraph">
-              <span id="temp2" class="graph"></span>
-              <span class="zero">0</span>
-              <span id="temp2_v" class="reading"></span>
-              <span class="hundred">100</span>
-            </div>
-          </div>
+          <img src="./images/engine-only.svg" alt="machine1" class="machine1" />
+        </div>
+      </div>
+      <div class="water-power mr30">
+        <div class="star-sec">
+          <img src="./images/temperature1.svg" alt="" />
+          <p class="water-power-heading">Supply Temperature</p>
+        </div>
+        <div class="multigraph">
+          <span id="temp1" class="graph"></span>
+          <span class="zero">0</span>
+          <span id="temp1_v" class="reading"></span>
+          <span class="hundred">100</span>
+        </div>
+      </div>
+      <div class="water-power">
+        <div class="star-sec">
+          <img src="./images/temperature1.svg" alt="" />
+          <p class="water-power-heading">Supply Temperature</p>
+        </div>
+        <div class="multigraph">
+          <span id="temp2" class="graph"></span>
+          <span class="zero">0</span>
+          <span id="temp2_v" class="reading"></span>
+          <span class="hundred">100</span>
         </div>
       </div>
       <div class="flex-align">
-        <div>
-          <div class="machine-container-section">
-            <img src="./images/water2.svg" alt="water2" class="water2" />
-            <div class="water-text">
-              <p>Chiller Total Return Flow</p>
-              <h4 id="CTRF"></h4>
-            </div>
-            <!-- <div class="water-power">
-                <div class="star-sec">
-                  <img src="./images/star.svg" alt="" />
-                  <p class="water-power-heading">Chiller Total Return Flow</p>
-                </div>
-              </div> -->
+        <div class="water-container-section">
+          <div class="water-img-wrapper"><img src="./images/water2.svg" alt="water2" class="water2" /></div>
+          <div class="water-text">
+            <p>Chiller Total Return Flow</p>
+            <h4 id="CTRF"></h4>
           </div>
         </div>
       </div>
@@ -1099,7 +1094,7 @@
   <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
   <script>
-    const totalPower = 60
+    const totalPower = 16
     const ChillwePower_1 = 500
     const ChillwePower_2 = 300
     const ChillweFlow_1 = 500
