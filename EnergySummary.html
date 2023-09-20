@@ -23,6 +23,7 @@
   <style>
     body {
       overflow-y: hidden;
+      background-color: #F4F4F4;
       /*height: 100vh;
         /* font-family: poppins; */
     }
@@ -208,8 +209,9 @@
 
     .cards {
       display: flex;
-      justify-content: space-between;
+      justify-content: space-evenly;
       align-items: center;
+      flex-wrap: wrap;
     }
 
     .total-power {
@@ -218,7 +220,8 @@
 
     .community-container {
       display: flex;
-      justify-content: space-between;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
       background-image: url("./images/bg1.svg");
       background-size: cover;
       background-repeat: no-repeat;
@@ -234,7 +237,7 @@
       font-weight: 500;
       font-size: calc(18px + (20 - 18) * (100vw - 375px) / (1920 - 375));
       width: 257px;
-      height: calc(295px + (295 - 295) * (100vh - 375px) / (1322 - 375));
+      height: calc(250px + (250 - 250) * (100vh - 375px) / (1322 - 375));
       color: black;
       /* text-align: center; */
       padding: 8px;
@@ -249,6 +252,8 @@
 
     .machine-container-section {
       display: flex;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
       gap: 10px;
       position: relative;
     }
@@ -258,6 +263,16 @@
       background: rgba(255, 255, 255, 0.2);
       padding: 8px;
       max-width: 193px;
+      height: 219px;
+      position: relative;
+    }
+
+    .machine-wrapper {
+      height: 219px;
+    }
+
+    .machine-wrapper img{
+      height: 100%;
     }
 
     .community-heading {
@@ -272,6 +287,10 @@
       display: flex;
       justify-content: start;
       align-items: start;
+    }
+
+    .star-sec img{ 
+      height: 46px;
     }
 
     .mr30 {
@@ -393,15 +412,29 @@
         height: 100%;
       }
 
-      .community-box {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
+     
+
+      .mr30{
+        margin: 0;
       }
 
-      .cards,
-      .community-container {
-        flex-direction: column;
+      .machine-container-section{
+        padding-top: 20px;
+      }
+
+      .machine-wrapper {
+        max-width: 100%;
+      }
+
+      .machine-wrapper img{
+        max-width: 100%;
+      }
+    }
+
+    @media screen and (max-width: 1520px) {
+
+      .mr30{
+        margin: 0;
       }
     }
 
@@ -491,11 +524,13 @@
         /* White glow */
         0 0 0px #00FF5D;
       position: absolute;
-      top: 220px;
+      top: 200px;
       left: -70px;
     }
 
-
+     .mb-40{
+      margin-bottom: 40px;
+     }   
 
     /* Graph - CSS  */
     .multigraph {
@@ -503,7 +538,7 @@
       height: 60px;
       /* Adjusted height proportionally */
       position: absolute;
-      top: 50%;
+      top: 45%;
       left: 40%;
       margin: -30px 0 0 -75px;
       /* Adjusted margin to center properly */
@@ -516,7 +551,7 @@
       height: 75px;
       /* Adjusted height proportionally */
       position: absolute;
-      border: 12px solid gray;
+      border: 8px solid gray;
       /* Adjusted border size */
       border-radius: 150px 150px 0 0;
       border-bottom: none;
@@ -537,7 +572,7 @@
       /* Adjusted height proportionally */
       position: absolute;
       top: 100%;
-      border: 12px solid #0085FF;
+      border: 8px solid #0085FF;
       /* Adjusted border size */
       content: '';
       border-radius: 0 0 150px 150px;
@@ -556,8 +591,12 @@
       transform-origin: center top;
     }
 
-    .graph:after {
-      transform: rotate(40deg);
+    #graph1:after {
+      transform: rotate(var(--rotation, 0deg));
+    }
+
+    #graph3:after {
+      transform: rotate(var(--rotation, 0deg));
     }
 
     .reading {
@@ -609,7 +648,7 @@
   width: 200px; /* Change width to 200px */
   height: 100px; /* Adjusted height proportionally */
   position: absolute;
-  border: 16px solid #C4C4C4; /* Adjusted border size */
+  border: 12px solid #C4C4C4; /* Adjusted border size */
   border-radius: 200px 200px 0 0;
   border-bottom: none;
 }
@@ -627,7 +666,7 @@
   height: 100px; /* Adjusted height proportionally */
   position: absolute;
   top: 100%;
-  border: 16px solid #2DBF3C; /* Adjusted border size */
+  border: 12px solid #2DBF3C; /* Adjusted border size */
   content: '';
   border-radius: 0 0 200px 200px;
   border-top: none;
@@ -644,8 +683,8 @@
   transform-origin: center top;
 }
 
-.graph2:after {
-  transform: rotate(40deg);
+.graph2:after, #temp1::after, #temp2::after {
+    transform: rotate(var(--rotation, 0deg));
 }
 
 .reading2 {
@@ -895,7 +934,7 @@
           <span class="reading2">
             <img src="./images/bolt.svg" alt="">
             <strong style="font-size: 16px;">Total EDH Power</strong>
-            <span style="color: gray; font-size: 12px;">16.0 KW</span>
+            <span id="TP_value" style="color: gray; font-size: 12px;"></span>
           </span>
           <span class="hundred2">250</span>
         </div>
@@ -903,23 +942,23 @@
       <div>
         <div class="community-heading">Community Building</div>
         <div class="machine-container-section">
-          <div>
+          <div class="machine-wrapper">
             <img src="./images/engine-only.svg" alt="machine1" class="machine1" />
-            <strong class="glow-text">Chillwe Water Flow <span>500 L/s</span></strong>
+            <strong class="glow-text">Chillwe Water Flow <span id="chillwe_flow_1">500 L/s</span></strong>
             <span class="text1">CNDWR>></span>
             <span class="text2">>>CNDWR</span>
             <span class="text3">CNDWR>></span>
             <span class="text4">>>CNDWR</span>
           </div>
-          <div class="water-power" style="position: relative;">
+          <div class="water-power">
             <div class="star-sec">
               <img src="./images/star.svg" alt="" />
               <p class="water-power-heading">Chillwe Water Power</p>
             </div>
             <div class="multigraph">
-              <span class="graph"></span>
+              <span id="graph1" class="graph"></span>
               <span class="zero">0</span>
-              <span class="reading">500kw</span>
+              <span id="chillwe_power_1" class="reading"></span>
               <span class="hundred">100</span>
             </div>
           </div>
@@ -929,23 +968,23 @@
         <div>
           <div class="community-heading">Harbor Building</div>
           <div class="machine-container-section">
-            <div>
+            <div class="machine-wrapper">
               <img src="./images/engine-only.svg" alt="machine1" class="machine1" />
-              <strong class="glow-text">Chillwe Water Flow <span>500 L/s</span></strong>
+              <strong class="glow-text">Chillwe Water Flow <span id="chillwe_flow_2">500 L/s</span></strong>
               <span class="text1">CNDWR>></span>
               <span class="text2">>>CNDWR</span>
               <span class="text3">CNDWR>></span>
               <span class="text4">>>CNDWR</span>
             </div>
-            <div class="water-power" style="position: relative;">
+            <div class="water-power">
               <div class="star-sec">
                 <img src="./images/star.svg" alt="" />
                 <p class="water-power-heading">Chillwe Water Power</p>
               </div>
               <div class="multigraph">
-                <span class="graph"></span>
+                <span id="graph3" class="graph"></span>
                 <span class="zero">0</span>
-                <span class="reading">500kw</span>
+                <span id="chillwe_power_2" class="reading"></span>
                 <span class="hundred">100</span>
               </div>
             </div>
@@ -957,7 +996,7 @@
 
   </section>
 
-  <section class="container-fluid">
+  <section class="container-fluid mb-40">
     <span class="headings">OASIS BUILDINGS</span>
     <div class="community-container">
       <!-- <div class="total-power">Total Power</div> -->
@@ -965,22 +1004,22 @@
         <div>
           <div class="chiller-text">
             <p>Chiller Bypass Flow</p>
-            <h5>500 L/S</h5>
+            <h5 id="bypass_flow_1"></h5>
           </div>
 
           <div class="chiller-text">
             <p>Chiller Bypass Flow</p>
-            <h5>500 L/S</h5>
+            <h5 id="bypass_flow_2"></h5>
           </div>
         </div>
         <div>
           <div class="chiller-text">
             <p>Chiller Bypass Flow</p>
-            <h5>500 L/S</h5>
+            <h5 id="bypass_flow_3"></h5>
           </div>
           <div class="chiller-text">
             <p>Chiller Bypass Flow</p>
-            <h5>500 L/S</h5>
+            <h5 id="bypass_flow_4"></h5>
           </div>
         </div>
       </div>
@@ -989,12 +1028,12 @@
         <div class="machine-container-section">
           <div class="overlay-text">
             <span>No Of Chiller Running: </span>
-            <p>5</p>
+            <p id="chiller_running"></p>
           </div>
 
-          <div style="position: relative;">
+          <div class="machine-wrapper" style="position: relative;">
             <img src="./images/engine-only.svg" alt="machine1" class="machine1" />
-            <strong class="glow-text2">Chillwe Water Flow <span>500 L/s</span></strong>
+            <strong class="glow-text2">Chillwe Water Flow <span id="chillwe_flow_3"></span></strong>
             <span class="text1">CNDWR>></span>
             <span class="text2">>>CNDWR</span>
             <span class="text3">CNDWR>></span>
@@ -1005,11 +1044,23 @@
               <img src="./images/temperature1.svg" alt="" />
               <p class="water-power-heading">Supply Temperature</p>
             </div>
+            <div class="multigraph">
+              <span id="temp1" class="graph"></span>
+              <span class="zero">0</span>
+              <span id="temp1_v" class="reading"></span>
+              <span class="hundred">100</span>
+            </div>
           </div>
           <div class="water-power">
             <div class="star-sec">
               <img src="./images/temperature1.svg" alt="" />
               <p class="water-power-heading">Supply Temperature</p>
+            </div>
+            <div class="multigraph">
+              <span id="temp2" class="graph"></span>
+              <span class="zero">0</span>
+              <span id="temp2_v" class="reading"></span>
+              <span class="hundred">100</span>
             </div>
           </div>
         </div>
@@ -1020,7 +1071,7 @@
             <img src="./images/water2.svg" alt="water2" class="water2" />
             <div class="water-text">
               <p>Chiller Total Return Flow</p>
-              <h4>207515 L/S</h4>
+              <h4 id="CTRF"></h4>
             </div>
             <!-- <div class="water-power">
                 <div class="star-sec">
@@ -1048,421 +1099,44 @@
   <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
   <script>
-    var communityDataInn = [];
-    var kwDataInn = 0;
-    var totalDataInn = 0;
-    var options = {
-      series: communityDataInn,
-      chart: {
-        width: "350px",
+    const totalPower = 60
+    const ChillwePower_1 = 500
+    const ChillwePower_2 = 300
+    const ChillweFlow_1 = 500
+    const ChillweFlow_2 = 600
+    const ChillweFlow_3 = 300
+    const Chiller_Total_Return_Flow = 207515
+    const Chiller_Running = 5
+    const Bypass_Flow_1 = 500
+    const Bypass_Flow_2 = 500
+    const Bypass_Flow_3 = 500
+    const Bypass_Flow_4 = 500
+    let temp_1 = 40
+    let temp_2 = 60
+    const rotationAngle = (value, maxV) => {return (value / maxV) * 180};
+    document.querySelector(".graph2").style.setProperty("--rotation", `${rotationAngle(totalPower, 250)}deg`)
+    document.getElementById("graph1").style.setProperty("--rotation", `${rotationAngle(ChillweFlow_1,1000)}deg`)
+    document.getElementById("graph3").style.setProperty("--rotation", `${rotationAngle(ChillweFlow_2, 1000)}deg`)
+    document.getElementById("temp1").style.setProperty("--rotation", `${rotationAngle(temp_1,100)}deg`)
+    document.getElementById("temp2").style.setProperty("--rotation", `${rotationAngle(temp_2, 100)}deg`)
+    document.getElementById("TP_value").innerHTML = `${totalPower.toFixed(1)} kW`;
+    document.getElementById("chillwe_power_1").innerHTML = `${ChillweFlow_1} kW`;
+    document.getElementById("chillwe_power_2").innerHTML = `${ChillweFlow_2} kW`;
 
-        type: "donut",
-      },
-      labels: ["KW", "Total"],
-      responsive: [
-        {
-          breakpoint: 1600,
-          options: {
-            chart: {
-              width: 300,
-            },
-          },
-        },
-        {
-          breakpoint: 1350,
-          options: {
-            chart: {
-              width: 280,
-            },
-          },
-        },
-      ],
-    };
+    document.getElementById("chillwe_flow_1").innerHTML = `${ChillweFlow_1} L/s`;
+    document.getElementById("chillwe_flow_2").innerHTML = `${ChillweFlow_2} L/s`;
+    document.getElementById("chillwe_flow_3").innerHTML = `${ChillweFlow_3} L/s`;
+    document.getElementById("CTRF").innerHTML = `${Chiller_Total_Return_Flow} L/s`;
 
-    var chart = new ApexCharts(document.querySelector("#chart"), options);
-    chart.render();
-  </script>
-  <script>
-    var oasisDataInn = [];
-    var oasiskwDataInn = 0;
-    var oasistotalDataInn = 0;
-    var options1 = {
-      series: oasisDataInn,
-      chart: {
-        width: "350px",
-        type: "donut",
-      },
-      labels: ["KW", "Total"],
-      responsive: [
-        {
-          breakpoint: 1600,
-          options: {
-            chart: {
-              width: 300,
-            },
-          },
-        },
-        {
-          breakpoint: 1350,
-          options: {
-            chart: {
-              width: 280,
-            },
-          },
-        },
-      ],
-    };
+    document.getElementById("temp1_v").innerHTML = `${temp_1} °F`;
+    document.getElementById("temp2_v").innerHTML = `${temp_2} °F`;
+    document.getElementById("chiller_running").innerHTML = `${Chiller_Running}`;
 
-    var chart1 = new ApexCharts(document.querySelector("#chart1"), options1);
-    chart1.render();
-  </script>
-  <script>
-    $(document).ready(function () {
-      // Transition effect for navbar
+    document.getElementById("bypass_flow_1").innerHTML = `${Bypass_Flow_1} L/s`;
+    document.getElementById("bypass_flow_2").innerHTML = `${Bypass_Flow_2} L/s`;
+    document.getElementById("bypass_flow_3").innerHTML = `${Bypass_Flow_3} L/s`;
+    document.getElementById("bypass_flow_4").innerHTML = `${Bypass_Flow_4} L/s`;
 
-      $(".navbar-toggler").click(function () {
-        $(".navbar-bg").toggleClass("solids");
-      });
-
-      $(".navbar-toggler-btn").click(function () {
-        $("#navbarNav").toggle();
-      });
-    });
-  </script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init({
-      duration: 1000,
-    });
-  </script>
-
-  <script type="text/javascript" src="js/config.js"></script>
-  <script type="text/javascript" src="js/require.js"></script>
-
-  <script>
-    var myTimeout = 0;
-    function blinker() {
-      var d = document.getElementById("firestatusid");
-      d.style.color = d.style.color == "red" ? "white" : "red";
-      myTimeout = setTimeout("blinker()", 900);
-    }
-
-    function stopBlinker() {
-      //clearTimeout(myTimeout);
-      //myTimeout = 0;
-      var d = document.getElementById("firestatusid");
-      d.style.color = d.style.color == "red" ? "white" : "white";
-      myTimeout = setTimeout("stopBlinker()", 1000);
-    }
-
-    require(["baja!", "dialogs"], function (baja, dialogs) {
-      "use strict";
-
-      var r = new baja.BatchResolve([
-        "station:|slot:/Drivers/NiagaraNetwork/UN2300/points/UN2300/BAS/LEVEL_5/SOLAR/SOLAR_5026/Temperature",
-        "station:|slot:/Drivers/NiagaraNetwork/UN2300/points/UN2300/BAS/LEVEL_5/SOLAR/SOLAR_5026/Humidity",
-        "station:|slot:/Services/AlarmService/Global$20Fire$20Points/GlobalFireStatus",
-        "station:|slot:/Drivers/NiagaraNetwork/IS_Status/KRTP_Status",
-        "station:|slot:/Drivers/NiagaraNetwork/IS_Status/CMOR_Status",
-        "station:|slot:/Drivers/NiagaraNetwork/IS_Status/RPICH_Status",
-        "station:|slot:/Drivers/NiagaraNetwork/CMOR/points/B30/B30_Controller_Status",
-        "station:|slot:/Drivers/NiagaraNetwork/DesigoCC/points/Oasis_Buildings/Total_Flow_Oasis",
-        "station:|slot:/Campus_Energy_Dashboard/Total_Campus_Elec_Consumption_kW",
-        "station:|slot:/Drivers/NiagaraNetwork/UN1550/points/UN1550/BAS/LEVEL_0/CHWS/CHWP_0001/Total_Campus_CHW_Flow",
-        "station:|slot:/Drivers/NiagaraNetwork/UN1550/points/UN1550/BAS/LEVEL_0/CHWS/CHWP_0001/Total_Campus_Cooling_KW",
-        "station:|slot:/Drivers/NiagaraNetwork/UN1550/points/UN1550/BAS/Campus_Total_Reverse_Flow/Campus_Total_Reverse_Flow",
-        "station:|slot:/Drivers/NiagaraNetwork/UN2400_EXT/points/UN2400_EXT/PMS/PV/Total_Building_kW",
-        "station:|slot:/Campus_Energy_Dashboard/CAMPUS_Domestic_Water_Flow_Rate",
-        "station:|slot:/Drivers/NiagaraNetwork/DesigoCC/points/Oasis_Buildings/Total_Flow_Oasis_Icon",
-        "station:|slot:/Drivers/NiagaraNetwork/DesigoCC/points/Total_Flow_community",
-        "station:|slot:/Drivers/NiagaraNetwork/DesigoCC/points/Oasis_Buildings/Chiller/CHPL_MainHead_bypasflo",
-        "station:|slot:/Drivers/GUI/EnergySummary/Communityflowkw",
-        "station:|slot:/Drivers/GUI/EnergySummary/Communityflowtotal",
-        "station:|slot:/Drivers/GUI/EnergySummary/Oasisflow",
-        "station:|slot:/Drivers/GUI/EnergySummary/Oasisflowkw",
-        "station:|slot:/Drivers/GUI/EnergySummary/Oasisflowtotal",
-        "station:|slot:/Drivers/NiagaraNetwork/DesigoCC/points/Total_Energy_Harbor_Community",
-        "station:|slot:/Drivers/NiagaraNetwork/DesigoCC/points/Total_Energy_Community1",
-        "station:|slot:/Drivers/NiagaraNetwork/DesigoCC/points/Oasis_Buildings/Chiller/Total_Energy_Oasis",
-        "station:|slot:/Drivers/NiagaraNetwork/DesigoCC/points/Oasis_Buildings/Chiller/Energy_Oasis",
-      ]);
-      var sub = new baja.Subscriber(); // Also batch subscribe all resolved Components
-
-      /*r.resolve({ subscriber: sub })
-  .then(function () {
-    // Get resolved objects
-    var obj = r.getTargetObjects();
-  })
-  .catch(function (err) {
-    // Called if any of the ORDs fail to resolve
-  });*/
-      function update(comp) {
-        var nameLower = comp.getName().toLowerCase();
-        var outValue = comp.getOut().getValueDisplay();
-        var outNumValue = comp.getOut().getValue();
-        var outValueLower = comp.getOut().getValueDisplay().toLowerCase();
-
-        if (nameLower === "temperature") {
-          //Â°C
-          document.getElementById("temperature").innerHTML = outValue;
-        } else if (nameLower === "humidity") {
-          document.getElementById("humidity").innerHTML = outValue;
-        } else if (nameLower === "total_campus_elec_consumption_kw") {
-          document.getElementById("powerid").innerHTML = outValue;
-        } else if (nameLower === "total_campus_chw_flow") {
-          document.getElementById("chwsflowid").innerHTML = outValue;
-        } else if (nameLower === "total_campus_cooling_kw") {
-          document.getElementById("chwskwid").innerHTML = outValue;
-        } else if (nameLower === "campus_total_reverse_flow") {
-          document.getElementById("chwsreverseflowid").innerHTML = outValue;
-        } else if (nameLower === "total_building_kw") {
-          document.getElementById("pvid").innerHTML = outValue;
-        } else if (nameLower === "campus_domestic_water_flow_rate") {
-          document.getElementById("domesticid").innerHTML = outValue;
-        } else if (nameLower === "total_flow_oasis") {
-          document.getElementById("totalflowid").innerHTML = outValue;
-        } else if (nameLower === "total_flow_community") {
-          document.getElementById("temp_val_Communityid").innerHTML =
-            outValue;
-        } else if (nameLower === "chpl_mainhead_bypasflo") {
-          document.getElementById("temp_val_Osaisid").innerHTML = outValue;
-        } else if (
-          nameLower === "total_energy_harbor_community" ||
-          nameLower === "total_energy_community1"
-        ) {
-          communityDataInn = [];
-          if (nameLower === "total_energy_community1") {
-            kwDataInn = outNumValue;
-          }
-          if (nameLower === "total_energy_harbor_community") {
-            totalDataInn = outNumValue;
-          }
-
-          communityDataInn.push(kwDataInn);
-          communityDataInn.push(totalDataInn);
-
-          //baja.outln("Resolved alarmDataInn: " + alarmDataInn);
-          chart.updateSeries(communityDataInn);
-        } else if (
-          nameLower === "energy_oasis" ||
-          nameLower === "total_energy_oasis"
-        ) {
-          oasisDataInn = [];
-          if (nameLower === "energy_oasis") {
-            oasiskwDataInn = outNumValue;
-          }
-          if (nameLower === "total_energy_oasis") {
-            oasistotalDataInn = outNumValue;
-          }
-
-          oasisDataInn.push(oasiskwDataInn);
-          oasisDataInn.push(oasistotalDataInn);
-
-          //baja.outln("Resolved alarmDataInn: " + alarmDataInn);
-          chart1.updateSeries(oasisDataInn);
-        } else if (nameLower === "globalfirestatus") {
-          if (outValueLower === "normal") {
-            document.getElementById("firestatusid").style.color = "white";
-            stopBlinker();
-          } else if (outValueLower === "fire") {
-            document.getElementById("firestatusid").style.color = "red";
-            blinker();
-          }
-        } else if (nameLower === "b30_controller_status") {
-          document.getElementById("serverStatus").innerHTML = outValue;
-          if (outValueLower === "online") {
-            document.getElementById("serverStatus").style.color = "white";
-            document
-              .getElementById("serverStatusIcon")
-              .classList.remove("fa-arrow-circle-down");
-            document
-              .getElementById("serverStatusIcon")
-              .classList.add("fa-arrow-circle-up");
-            document.getElementById("serverStatusIcon").style.color =
-              "lightgreen";
-          } else if (outValueLower === "offline") {
-            document.getElementById("serverStatus").style.color = "white";
-            document
-              .getElementById("serverStatusIcon")
-              .classList.remove("fa-arrow-circle-up");
-            document
-              .getElementById("serverStatusIcon")
-              .classList.add("fa-arrow-circle-down");
-            document.getElementById("serverStatusIcon").style.color = "red";
-          }
-        } else if (nameLower === "total_flow_oasis_icon") {
-          if (outValueLower === "normal") {
-            document.getElementById("totalflowiconid").style.color =
-              "rgb(45, 140, 240)";
-          } else if (outValueLower === "high") {
-            document.getElementById("totalflowiconid").style.color = "red";
-          }
-        }
-      }
-      // Or use the each method (will only be called if all ORDs resolve). Each will
-      // be called for each target.
-      r.resolve({
-        each: function () {
-          //baja.outln("Resolved: " + this.getOut().getValue());
-          var currentUser = " " + baja.getUserName().toLowerCase();
-          baja.outln("user: " + currentUser);
-          document.getElementById("username").innerHTML = currentUser;
-
-          if (this.getDisplayName().toLowerCase() === "temperature") {
-            //Â°C
-            document.getElementById("temperature").innerHTML =
-              this.getOut().getValueDisplay();
-          } else if (this.getDisplayName().toLowerCase() === "humidity") {
-            document.getElementById("humidity").innerHTML =
-              this.getOut().getValueDisplay();
-          } else if (
-            this.getDisplayName().toLowerCase() ===
-            "total_campus_elec_consumption_kw"
-          ) {
-            document.getElementById("powerid").innerHTML =
-              this.getOut().getValueDisplay();
-          } else if (
-            this.getDisplayName().toLowerCase() === "total_campus_chw_flow"
-          ) {
-            document.getElementById("chwsflowid").innerHTML =
-              this.getOut().getValueDisplay();
-          } else if (
-            this.getDisplayName().toLowerCase() === "total_campus_cooling_kw"
-          ) {
-            document.getElementById("chwskwid").innerHTML =
-              this.getOut().getValueDisplay();
-          } else if (
-            this.getDisplayName().toLowerCase() ===
-            "campus_total_reverse_flow"
-          ) {
-            document.getElementById("chwsreverseflowid").innerHTML =
-              this.getOut().getValueDisplay();
-          } else if (
-            this.getDisplayName().toLowerCase() === "total_flow_oasis"
-          ) {
-            document.getElementById("totalflowid").innerHTML =
-              this.getOut().getValueDisplay();
-          } else if (
-            this.getDisplayName().toLowerCase() === "total_flow_community"
-          ) {
-            document.getElementById("temp_val_Communityid").innerHTML =
-              this.getOut().getValueDisplay();
-          } else if (
-            this.getDisplayName().toLowerCase() === "chpl_mainhead_bypasflo"
-          ) {
-            document.getElementById("temp_val_Osaisid").innerHTML =
-              this.getOut().getValueDisplay();
-          } else if (
-            this.getDisplayName().toLowerCase() === "total_building_kw"
-          ) {
-            document.getElementById("pvid").innerHTML =
-              this.getOut().getValueDisplay();
-          } else if (
-            this.getDisplayName().toLowerCase() ===
-            "campus_domestic_water_flow_rate"
-          ) {
-            document.getElementById("domesticid").innerHTML =
-              this.getOut().getValueDisplay();
-          } else if (
-            this.getDisplayName().toLowerCase() ===
-            "total_energy_community1" ||
-            this.getDisplayName().toLowerCase() ===
-            "total_energy_harbor_community"
-          ) {
-            if (
-              this.getDisplayName().toLowerCase() ===
-              "total_energy_community1"
-            ) {
-              kwDataInn = this.getOut().getValue();
-            }
-            if (
-              this.getDisplayName().toLowerCase() ===
-              "total_energy_harbor_community"
-            ) {
-              totalDataInn = this.getOut().getValue();
-            }
-
-            communityDataInn.push(this.getOut().getValue());
-            //baja.outln("Resolved alarmDataInn: " + alarmDataInn);
-            chart.updateSeries(communityDataInn);
-          } else if (
-            this.getDisplayName().toLowerCase() === "energy_oasis" ||
-            this.getDisplayName().toLowerCase() === "total_energy_oasis"
-          ) {
-            if (this.getDisplayName().toLowerCase() === "energy_oasis") {
-              oasiskwDataInn = this.getOut().getValue();
-            }
-            if (
-              this.getDisplayName().toLowerCase() === "total_energy_oasis"
-            ) {
-              oasistotalDataInn = this.getOut().getValue();
-            }
-
-            oasisDataInn.push(this.getOut().getValue());
-            //baja.outln("Resolved alarmDataInn: " + alarmDataInn);
-            chart1.updateSeries(oasisDataInn);
-          } else if (
-            this.getDisplayName().toLowerCase() === "globalfirestatus"
-          ) {
-            if (this.getOut().getValueDisplay().toLowerCase() === "normal") {
-              document.getElementById("firestatusid").style.color = "white";
-              stopBlinker();
-            } else if (
-              this.getOut().getValueDisplay().toLowerCase() === "fire"
-            ) {
-              document.getElementById("firestatusid").style.color = "red";
-              blinker();
-            }
-          } else if (
-            this.getDisplayName().toLowerCase() === "b30_controller_status"
-          ) {
-            document.getElementById("serverStatus").innerHTML =
-              this.getOut().getValueDisplay();
-            if (this.getOut().getValueDisplay().toLowerCase() === "online") {
-              document.getElementById("serverStatus").style.color = "white";
-              document
-                .getElementById("serverStatusIcon")
-                .classList.remove("fa-arrow-circle-down");
-              document
-                .getElementById("serverStatusIcon")
-                .classList.add("fa-arrow-circle-up");
-              document.getElementById("serverStatusIcon").style.color =
-                "lightgreen";
-            } else if (
-              this.getOut().getValueDisplay().toLowerCase() === "offline"
-            ) {
-              document.getElementById("serverStatus").style.color = "white";
-              document
-                .getElementById("serverStatusIcon")
-                .classList.remove("fa-arrow-circle-up");
-              document
-                .getElementById("serverStatusIcon")
-                .classList.add("fa-arrow-circle-down");
-              document.getElementById("serverStatusIcon").style.color =
-                "yellow";
-            }
-          } else if (
-            this.getDisplayName().toLowerCase() === "total_flow_oasis_icon"
-          ) {
-            if (this.getOut().getValueDisplay().toLowerCase() === "normal") {
-              document.getElementById("totalflowiconid").style.color =
-                "rgb(45, 140, 240)";
-            } else if (
-              this.getOut().getValueDisplay().toLowerCase() === "high"
-            ) {
-              document.getElementById("totalflowiconid").style.color = "red";
-            }
-          }
-        },
-
-        subscriber: sub,
-      });
-      sub.attach("changed", function (prop) {
-        {
-          update(this);
-        }
-      });
-    });
   </script>
 </body>
 
