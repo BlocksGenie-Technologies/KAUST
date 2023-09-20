@@ -424,6 +424,24 @@
     .glow-text span {
       display: block;
     }
+    .glow-text2 {
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 0 0 10px #00FF5D,
+        /* White glow */
+        0 0 5px #00FF5D,
+        /* White glow */
+        0 0 0px #00FF5D;
+      position: absolute;
+      top: 0;
+      right: 30px;
+      text-align: center;
+    }
+
+    .glow-text2 span {
+      display: block;
+    }
 
     .text1 {
       font-size: 12px;
@@ -974,7 +992,14 @@
             <p>5</p>
           </div>
 
-          <img src="./images/engine-only.svg" alt="machine1" class="machine1" />
+          <div style="position: relative;">
+            <img src="./images/engine-only.svg" alt="machine1" class="machine1" />
+            <strong class="glow-text2">Chillwe Water Flow <span>500 L/s</span></strong>
+            <span class="text1">CNDWR>></span>
+            <span class="text2">>>CNDWR</span>
+            <span class="text3">CNDWR>></span>
+            <span class="text4">>>CNDWR</span>
+          </div>
           <div class="water-power mr30">
             <div class="star-sec">
               <img src="./images/temperature1.svg" alt="" />
